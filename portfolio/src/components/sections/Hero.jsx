@@ -259,14 +259,19 @@ const Hero = () => {
                 style={{
                   width: '140px',
                   height: '140px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '3.5rem',
-                  background: 'linear-gradient(135deg, var(--card-dark), var(--bg-darker))',
+                  overflow: 'hidden',
                 }}
               >
-                👨‍💻
+                <img 
+                  src="/gambar.jpeg" 
+                  alt="Steaven Octavian Galang"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 30%',
+                  }}
+                />
               </div>
             </motion.div>
 
@@ -405,15 +410,20 @@ const Hero = () => {
               style={{
                 width: '260px',
                 height: '260px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '6rem',
-                background: 'linear-gradient(135deg, var(--card-dark), var(--bg-darker))',
+                overflow: 'hidden',
                 cursor: 'pointer',
               }}
             >
-              👨‍💻
+              <img 
+                src="/gambar.jpeg" 
+                alt="Steaven Octavian Galang"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 30%',
+                }}
+              />
             </motion.div>
             <p style={{
               fontFamily: 'var(--font-mono)',

@@ -103,27 +103,12 @@ const Admin = () => {
   }
 
   return (
-    <div className="dev-grid" style={{ minHeight: '100vh' }}>
-      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
-        {/* Header */}
-        <div className="admin-header">
-          <div>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 700 }}>Portfolio Admin</h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Manage projects, gallery & settings</p>
-          </div>
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Link to="/" className="btn btn-outline" style={{ fontSize: '0.75rem' }}>View Site</Link>
-            <button onClick={logout} className="admin-btn admin-btn-delete">Logout</button>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem' }}>
-          {['projects', 'gallery', 'settings'].map(tab => (
-            <button key={tab} onClick={() => setActiveTab(tab)} style={{ padding: '0.75rem 1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', background: activeTab === tab ? 'var(--primary)' : 'transparent', color: activeTab === tab ? '#000' : 'var(--text-secondary)', border: `1px solid ${activeTab === tab ? 'var(--primary)' : 'var(--border-dark)'}`, borderRadius: '0.375rem', cursor: 'pointer' }}>
-              {tab}
-            </button>
-          ))}
+    <div className="dev-grid" style={{ minHeight: '100vh', paddingBottom: '100px' }}>
+      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+        {/* Simple Header */}
+        <div style={{ marginBottom: '2rem' }}>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.25rem' }}>Portfolio Admin</h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Manage projects, gallery & settings</p>
         </div>
 
         {/* Settings Tab */}
@@ -239,6 +224,112 @@ const Admin = () => {
           </div>
         )}
       </div>
+
+      {/* Pill Navbar at Bottom */}
+      <nav style={{
+        position: 'fixed',
+        bottom: '1.5rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        background: 'rgba(17, 17, 17, 0.95)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid var(--border-dark)',
+        borderRadius: '9999px',
+        padding: '0.5rem',
+        display: 'flex',
+        gap: '0.25rem',
+        zIndex: 1000,
+        boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)',
+      }}>
+        {/* Tab buttons */}
+        {[
+          { id: 'projects', icon: '📁', label: 'Projects' },
+          { id: 'gallery', icon: '🖼️', label: 'Gallery' },
+          { id: 'settings', icon: '⚙️', label: 'Settings' },
+        ].map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            style={{
+              padding: '0.625rem 1rem',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              background: activeTab === tab.id ? 'var(--primary)' : 'transparent',
+              color: activeTab === tab.id ? '#000' : 'var(--text-secondary)',
+              border: 'none',
+              borderRadius: '9999px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.375rem',
+              transition: 'all 0.2s ease',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <span>{tab.icon}</span>
+            <span className="nav-label">{tab.label}</span>
+          </button>
+        ))}
+
+        {/* Divider */}
+        <div style={{ width: '1px', background: 'var(--border-dark)', margin: '0.25rem 0.5rem' }}></div>
+
+        {/* View Site */}
+        <Link
+          to="/"
+          style={{
+            padding: '0.625rem 1rem',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.65rem',
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            background: 'transparent',
+            color: 'var(--primary)',
+            textDecoration: 'none',
+            borderRadius: '9999px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.375rem',
+            transition: 'all 0.2s ease',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          👁️ <span className="nav-label">View</span>
+        </Link>
+
+        {/* Logout */}
+        <button
+          onClick={logout}
+          style={{
+            padding: '0.625rem 1rem',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.65rem',
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            background: 'rgba(255, 0, 0, 0.15)',
+            color: 'var(--accent-red)',
+            border: 'none',
+            borderRadius: '9999px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.375rem',
+            transition: 'all 0.2s ease',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          🚪 <span className="nav-label">Logout</span>
+        </button>
+      </nav>
+
+      {/* Mobile-only hide labels */}
+      <style>{`
+        @media (max-width: 640px) {
+          .nav-label { display: none; }
+        }
+      `}</style>
     </div>
   );
 };

@@ -41,7 +41,7 @@ const Kurama3DFullscreen = ({ onClose }) => {
       {/* 3D Canvas */}
       <div style={{ width: '100%', height: '60vh', position: 'relative', marginTop: '-5vh' }}>
         <Canvas
-          camera={{ position: [0, 6, 12], fov: 50 }}
+          camera={{ position: [0, 6, 16], fov: 50 }}
           style={{ background: 'transparent' }}
         >
           <Suspense fallback={null}>
